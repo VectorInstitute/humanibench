@@ -221,3 +221,9 @@ cython_debug/
 
 # Add .DS_Store to the ignore list
 .DS_Store
+
+# Vscode
+.vscode
+
+# macos
+*.DS_Store

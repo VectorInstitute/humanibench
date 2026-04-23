@@ -1,5 +1,14 @@
 # HumaniBench: A Human-Centric Benchmark for Large Multimodal Models Evaluation
 
+--------------------------------
+
+[![code checks](https://github.com/VectorInstitute/HumaniBench/actions/workflows/code_checks.yml/badge.svg)](https://github.com/VectorInstitute/aieng-template-uv/actions/workflows/code_checks.yml)
+[![unit tests](https://github.com/VectorInstitute/HumaniBench/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/VectorInstitute/HumaniBench/actions/workflows/unit_tests.yml)
+[![integration tests](https://github.com/VectorInstitute/HumaniBench/actions/workflows/integration_tests.yml/badge.svg)](https://github.com/VectorInstitute/HumaniBench/actions/workflows/integration_tests.yml)
+[![docs](https://github.com/VectorInstitute/HumaniBench/actions/workflows/docs.yml/badge.svg)](https://github.com/VectorInstitute/HumaniBench/actions/workflows/docs.yml)
+[![codecov](https://codecov.io/github/VectorInstitute/HumaniBench/graph/badge.svg?token=83MYFZ3UPA)](https://codecov.io/github/VectorInstitute/HumaniBench)
+![GitHub License](https://img.shields.io/github/license/VectorInstitute/HumaniBench)
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ebed8e26-5bdf-48c1-ae41-0775b8c33c0a" alt="HumaniBench Logo" width="300"/>
 </p>
@@ -89,6 +98,41 @@ This repository provides code and scripts for evaluating LMMs across **7 human-a
 * ❤️ **Empathy and ethics** vary significantly by model family
 * 🧠 **Chain-of-Thought reasoning** improves performance but doesn’t fully mitigate bias
 * 🧪 **Robustness tests** reveal fragility to noise, occlusion, and blur
+
+---
+
+## 🧑🏿‍💻 Developing
+
+### Installing dependencies
+
+The development environment can be set up using
+[uv](https://github.com/astral-sh/uv?tab=readme-ov-file#installation). Hence, make sure it is
+installed and then run:
+
+```bash
+uv sync
+source .venv/bin/activate
+```
+
+In order to install dependencies for testing (codestyle, unit tests, integration tests),
+run:
+
+```bash
+uv sync --dev
+source .venv/bin/activate
+```
+
+In order to exclude installation of packages from a specific group (e.g. docs),
+run:
+
+```bash
+uv sync --no-group docs
+```
+
+If you're coming from `poetry` then you'll notice that the virtual environment
+is actually stored in the project root folder and is by default named as `.venv`.
+The other important note is that while `poetry` uses a "flat" layout of the project,
+`uv` opts for the the "src" layout. (For more info, see [here](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/))
 
 ---
 
