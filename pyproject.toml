@@ -90,7 +90,7 @@ docs = [
     "mkdocstrings>=1.0.4",
     "mkdocstrings-python>=1.10.0",
     "ipykernel>=6.29.5",
-    "ipython>=8.31.0",
+    "ipython>=9.13.0",
 ]
 
 # Default: tooling + doc builds. Use `uv sync --no-dev` (or no default groups) for minimal installs in CI.
