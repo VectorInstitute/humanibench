@@ -69,19 +69,17 @@
   <!-- <section class="hero"> -->
     <section class="hero hero-top">
 
-    
+
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- <h1 class="title is-2 publication-title">VLDBench: <u>V</u>ision <u>L</u>anguage Models -->
-              <!-- <u>D</u>isinformation Detection <u>Bench</u>mark -->
             <img src="./static/images/HumaniBenchLogo.ico" alt="HumaniBench Logo" style="max-height: 150px; margin-bottom: 10px;">
             <h1 class="title is-2 publication-title">
               <span style="font-weight: 900;">HumaniBench</span>: A Human-Centric Benchmark for Large Multimodal Models Evaluation
             </h1>
-            
-            
+
+
             <div class="is-size-5 publication-authors">
               <span class="author-block"><a href="https://scholar.google.com/citations?user=chcz7RMAAAAJ&hl=en">Shaina Raza</a><sup>1</sup>,</span>
               <span class="author-block"><a href="https://aravind-3105.github.io/">Aravind Narayanan</a><sup>1*</sup>,</span>
@@ -133,7 +131,7 @@
                     <span>Code</span>
                   </a>
                 </span>
-            
+
                 <span class="link-block">
                   <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -181,9 +179,9 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Although recent large multimodal models (LMMs) demonstrate impressive progress on vision–language tasks, their alignment with human-centered (HC) principles, such as fairness, ethics, inclusivity, empathy, and robustness; remains poorly understood. We present HumaniBench, a unified evaluation framework designed to characterize HC alignment across realistic, socially grounded visual contexts. 
-            HumaniBench contains 32,000 expert-verified image–question pairs derived from real-world news imagery and spanning seven evaluation tasks: scene understanding, instance identity, multiple-choice visual question answering (VQA), multilinguality, visual grounding, empathetic captioning, and image-resilience testing. 
-            Each task is mapped to one or more HC principles through a principled operationalization of metrics covering accuracy, harmful-content detection, hallucination and faithfulness, coherence, cross-lingual quality, empathy, and robustness. 
+            Although recent large multimodal models (LMMs) demonstrate impressive progress on vision–language tasks, their alignment with human-centered (HC) principles, such as fairness, ethics, inclusivity, empathy, and robustness; remains poorly understood. We present HumaniBench, a unified evaluation framework designed to characterize HC alignment across realistic, socially grounded visual contexts.
+            HumaniBench contains 32,000 expert-verified image–question pairs derived from real-world news imagery and spanning seven evaluation tasks: scene understanding, instance identity, multiple-choice visual question answering (VQA), multilinguality, visual grounding, empathetic captioning, and image-resilience testing.
+            Each task is mapped to one or more HC principles through a principled operationalization of metrics covering accuracy, harmful-content detection, hallucination and faithfulness, coherence, cross-lingual quality, empathy, and robustness.
             We evaluate 15 state-of-the-art LMMs under this framework and observe consistent cross-model trade-offs: proprietary systems achieve the strongest performance on ethics, reasoning, and empathy, while open-source models exhibit superior visual grounding and resilience. All models, however, show persistent gaps in fairness and multilingual inclusivity. We further analyze the effect of inference-time techniques, finding that chain-of-thought prompting and test-time scaling yield 8–12% improvements on several HC dimensions. HumaniBench provides a reproducible, extensible foundation for systematic HC evaluation of LMMs and enables fine-grained analysis of alignment trade-offs that are not captured by conventional multimodal benchmarks.
 
           </p>
@@ -210,16 +208,16 @@
             <h5> <b> Main contributions: </b></h5>
             <ol>
               <li>We release a corpus of about 32K image–text pairs curated from real-world news articles on diverse, socially relevant topics. For each image we generate a caption and assign a social-attribute tag (age, gender, race, sport, or occupation) to create rich metadata for downstream task annotations</li>
-  
+
               <li>Guided by HCAI, we distill seven human-aligned principles into seven realistic LMM tasks: <i>(T1) Scene Understanding, (T2) Instance Identity, (T3) Multiple-Choice VQA, (T4) Multilinguality, (T5) Visual Grounding, (T6) Empathetic Captioning, and (T7) Image Resilience</i>. Each sample in each task is labeled through a semi-automated workflow and rigorously verified by domain experts to ensure reliable ground truth at scale</li>
-              
+
               <li>We benchmark 15 leading LMMs, 13 open-source and 2 proprietary models, delivering the first holistic measure of their human-readiness. All data, code, and evaluation scripts are publicly released to foster transparent and reproducible research</li>
             </ol>
             </p>
           </div>
         </div>
       </div>
-      
+
       <!--/ Abstract. -->
 
     </div>
@@ -233,7 +231,7 @@
       <!-- Latent space editing applications -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-          
+
           <h2 class="title is-3 has-text-centered">HumaniBench Framework Overview</h2>
 
           <div class="content has-text-justified">
@@ -262,7 +260,7 @@
 
 
             <div class="content has-text-justified">
-              <p align="justify"> 
+              <p align="justify">
                 <!-- link datasheet.pdf  -->
                 The datasheet for the final HumaniBench dataset can be found <a href="../datasheet.pdf" target="_blank">here</a>.
 
@@ -280,42 +278,42 @@
               <img src="static/images/HumaniBenchOverview.jpg" style="max-width:80%">
               <p class="content has-text-justified"><b> <span>Figure</span></b>: <strong>HumaniBench</strong> overview. ♠ = covers <em>all</em> seven principles; all tasks are evaluated across five social attributes (age, gender, race, occupation, sport). Sections: (i) icon row, (ii) principle definitions, (iii) seven-task suite (I = image, T = text, B = bounding box), and (iv) metric–principle alignment.</p><br>
             </div>
-            
+
 
             <div class="content has-text-justified">
-              <p align="justify"> 
+              <p align="justify">
                 Each of the seven tasks in HumaniBench corresponds to one or more of the seven core human-centric principles that we defined and is designed to reflect realistic, complex, and diverse scenarios.
               </p>
               <ul>
                 <li><strong>T1: Scene Understanding</strong><br>
                   Evaluates models on open-ended reasoning over everyday scenes with socially grounded attributes using both standard and chain-of-thought prompts.
                 </li>
-              
+
                 <li><strong>T2: Instance Identity</strong><br>
                   Tests the model's ability to identify and describe key individuals or objects in an image based on identity-relevant features.
                 </li>
-              
+
                 <li><strong>T3: Multiple-Choice VQA</strong><br>
                   Assesses fine-grained visual recognition through multiple-choice questions focused on socially salient visual attributes.
                 </li>
-              
+
                 <li><strong>T4: Multilinguality</strong><br>
                   Measures fairness and consistency in visual question answering across ten languages representing diverse cultural and linguistic contexts.
                 </li>
-              
+
                 <li><strong>T5: Visual Grounding</strong><br>
                   Evaluates how accurately a model links textual references to visual regions using bounding boxes.
                 </li>
-              
+
                 <li><strong>T6: Empathetic Captioning</strong><br>
                   Tests the model’s ability to generate emotionally sensitive yet factual image captions for complex social scenes.
                 </li>
-              
+
                 <li><strong>T7: Image Resilience</strong><br>
                   Assesses robustness by comparing model responses to original and visually perturbed versions of the same image.
                 </li>
               </ul>
-              
+
           </div>
 
         </div>
@@ -348,22 +346,22 @@
               <tr><td style="padding: 6px; border-bottom: 1px solid #e0e0e0;"><a href="https://huggingface.co/microsoft/Phi-3.5-vision-instruct" target="_blank">Phi 3.5 Vision Instruct</a></td></tr>
               <tr><td style="padding: 6px; border-bottom: 1px solid #e0e0e0;"><a href="https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct" target="_blank">Qwen2.5-VL-7B Instruct</a></td></tr>
               <tr><td style="padding: 6px;"><a href="#" target="_blank">Gemma 3</a></td></tr>
-          
+
               <!-- Closed Source Models -->
               <tr><td style="padding: 6px; border-bottom: 1px solid #e0e0e0;">
-                <a href="https://platform.openai.com/docs/models/gpt-4o" target="_blank">OpenAI GPT-4o</a> 
+                <a href="https://platform.openai.com/docs/models/gpt-4o" target="_blank">OpenAI GPT-4o</a>
                 <span style="font-size: 0.9em; color: gray;">(Closed source)</span>
               </td></tr>
               <tr><td style="padding: 6px;">
-                <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank">Gemini 2.0</a> 
+                <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank">Gemini 2.0</a>
                 <span style="font-size: 0.9em; color: gray;">(Closed source)</span>
               </td></tr>
             </tbody>
           </table>
-          
-          
-        
-        
+
+
+
+
       </div>
 
       <br><br>
@@ -380,7 +378,7 @@
 
           <div class="content has-text-justified">
             <p>Closed-source large multimodal models generally achieve the highest overall performance, showing strengths in fairness, reasoning, safety, multilingual coverage, and empathetic responses. They tend to produce more balanced outputs across demographics and benefit from stronger safety alignment and reinforcement learning techniques.</p>
-            <p>Open-source models, however, excel in specific capabilities. Some outperform closed alternatives in understanding tasks, particularly object recognition and visual grounding, and achieve higher robustness through specialized stabilization strategies. In reasoning and ethical safety, open models come close to matching closed models, despite using far fewer computational resources.</p> 
+            <p>Open-source models, however, excel in specific capabilities. Some outperform closed alternatives in understanding tasks, particularly object recognition and visual grounding, and achieve higher robustness through specialized stabilization strategies. In reasoning and ethical safety, open models come close to matching closed models, despite using far fewer computational resources.</p>
              <p>Overall, closed models maintain a lead in safety and inclusivity, while open models demonstrate that competitive and well-grounded results can be achieved efficiently without proprietary infrastructure.</p>
           </div>
 
@@ -486,14 +484,14 @@
               Closed models like GPT-4o and Gemini 2.0 consistently produce genuinely empathetic captions that acknowledge emotional nuance and offer supportive interpretations. In contrast, most open-source models, such as Aya Vision and Phi-4, tend to default to literal or surface-level descriptions, revealing a clear empathy-tone gap. These differences highlight the strengths of closed models in human-centric alignment and the ongoing challenge of improving affective understanding in open models. The above figure also illustrates how models handle empathy in image captioning, comparing simple (analytic) and empathic (emotionally aware) styles.</p> -->
           </div>
 
-          
+
 
           <!-- <h3 class="title is-4 has-text-justified">6. Robustness is Limited Under Real-World Perturbations</h3>
           <div class="content has-text-centered">
             <p style="text-align: justify;">
               No model fully withstands real-world perturbations, though Gemini-2.0 and some robustness-tuned open models like InternVL and CogVLM show relatively better resilience. Many models, however, experience steep performance drops under such conditions, underscoring ongoing robustness challenges.
             </p>
-            
+
 
           </div>
 
@@ -545,7 +543,7 @@
 
   </div>
   </section>
-  
+
   <!-- ADD THIS NEW SECTION HERE -->
   <section class="section">
     <div class="container is-max-desktop">
@@ -561,7 +559,7 @@
       </div>
     </div>
   </section>
-  
+
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title"><a id="bibtex">BibTeX</a></h2>
@@ -572,7 +570,7 @@
             journal={arXiv preprint arXiv:2505.11454},
             year={2025}
           }
-                  
+
   </code></pre>
     </div>
   </section>
