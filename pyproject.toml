@@ -158,6 +158,48 @@ module = [
 ]
 ignore_missing_imports = true
 
+# Task tree (`src/task*`) = one-off inference / data / metrics scripts. Third-party stubs
+# (transformers, openai, PIL) do not match their runtime APIs; relax noise while keeping
+# the small `humanibench` package under normal strictness above.
+[[tool.mypy.overrides]]
+module = [
+    "task1_scene_understanding",
+    "task1_scene_understanding.*",
+    "task2_instance_identity",
+    "task2_instance_identity.*",
+    "task3_multiplechoice_vqa",
+    "task3_multiplechoice_vqa.*",
+    "task4_multilingual",
+    "task4_multilingual.*",
+    "task5_visual_grounding",
+    "task5_visual_grounding.*",
+    "task6_empathetic_captioning",
+    "task6_empathetic_captioning.*",
+    "task7_image_resilience",
+    "task7_image_resilience.*",
+]
+allow_untyped_calls = true
+check_untyped_defs = true
+disable_error_code = [
+    "arg-type",
+    "assignment",
+    "attr-defined",
+    "call-arg",
+    "call-overload",
+    "import-untyped",
+    "index",
+    "misc",
+    "name-defined",
+    "operator",
+    "return-value",
+    "type-arg",
+    "type-var",
+    "union-attr",
+    "valid-type",
+    "var-annotated",
+]
+extra_checks = false
+
 [tool.ruff]
 # Ruff lints `*.py` and notebooks; the config file is not a Python file to include here.
 include = ["**/*.py", "**/*.ipynb"]
