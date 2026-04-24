@@ -169,7 +169,7 @@ for sample in selected_samples:
                         "role": "user",
                         "content": [
                             {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{pil_image}\n"}},
-                            {"type": "text", "text": "{question}"},
+                            {"type": "text", "text": question},
                         ],
                     }
                 ]
@@ -184,7 +184,7 @@ for sample in selected_samples:
                 """
                 response = client.chat.completions.create(
                     model=MODEL,
-                    messages=[conversation],
+                    messages=conversation,
                     temperature=0.0,
                 )
 
