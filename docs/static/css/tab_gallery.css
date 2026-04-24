@@ -4,7 +4,7 @@
     width: 10%;
     padding: 5px;
   }
-  
+
 /* Style the images inside the grid */
 .tab_column img {
 opacity: 0.8;
@@ -47,7 +47,7 @@ font-size: 35px;
 cursor: pointer;
 }
 
- 
+
 #juxtapose-embed {
     width: 100%;
     max-width: initial;

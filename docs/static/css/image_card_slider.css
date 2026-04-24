@@ -1,7 +1,7 @@
 .d-flex {
     display: flex;
   }
-  
+
 .justify-content-center {
 justify-content: center;
 }
@@ -24,7 +24,7 @@ justify-content: center;
     height: 360px;
     display: none;
 }
-  
+
   /* .slide {
     position: absolute;
     width: 100%;
@@ -32,7 +32,7 @@ justify-content: center;
     left: 100%;
     transition: all 0.5s ease-in-out;
   }
-  
+
   .slide:first-child {
     left: 0;
   } */

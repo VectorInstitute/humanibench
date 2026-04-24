@@ -58,13 +58,13 @@ jobs:
 
       - name: Install dependencies and check code
         run: |
-          uv run pytest -m "integration_test" --cov src/aieng_template_uv --cov-report=xml tests
+          uv run pytest -m "integration_test" --cov src/humanibench --cov-report=xml tests
 
       # Uncomment this once this repo is configured on Codecov
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: VectorInstitute/aieng-template-uv
+          slug: VectorInstitute/humanibench
           fail_ci_if_error: false
           verbose: true

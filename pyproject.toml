@@ -1,18 +1,66 @@
 [project]
-name = "aieng-template-uv"
+name = "humanibench"
 version = "0.1.1"
-description = "Add your description here"
+description = "A human-centric benchmark and evaluation code for large multimodal models (LMMs) on Human-Centered AI principles (fairness, ethics, language inclusivity, empathy, robustness, and more)."
 readme = "README.md"
-authors = [ {name = "Vector AI Engineering", email = "ai_engineering@vectorinstitute.ai"}]
+authors = [{ name = "Vector AI Engineering", email = "ai_engineering@vectorinstitute.ai" }]
 license = "Apache-2.0"
-repository = "https://github.com/VectorInstitute/aieng-template-uv"
 requires-python = ">=3.12"
+keywords = [
+    "benchmark",
+    "multimodal",
+    "lmm",
+    "evaluation",
+    "human-centered-ai",
+    "lmm-benchmark",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "filelock==3.29.0",
-    "requests>=2.33.0", # Pinning version to address vulnerability CVE-2026-25645
+    "requests>=2.33.0",  # Pinning version to address vulnerability CVE-2026-25645
     "urllib3==2.6.3",
-    "pygments>=2.20.0", # Pinning version to address vulnerability CVE-2026-4539
+    "pygments>=2.20.0",  # Pinning version to address vulnerability CVE-2026-4539
 ]
+
+# Optional sets for running inference / metrics scripts (not required for the core installable API).
+# Example: `uv sync --extra ml` or `pip install humanibench[ml,eval]`
+[project.optional-dependencies]
+ml = [
+    "torch>=2.1",
+    "torchvision",
+    "transformers>=4.40",
+    "accelerate",
+    "datasets",
+    "huggingface_hub",
+    "pillow",
+    "safetensors",
+    "tqdm",
+]
+eval = [
+    "openai",
+    "python-dotenv",
+    "deepeval",
+    "evaluate",
+    "bert_score",
+    "scikit-learn",
+    "langdetect",
+]
+
+[project.urls]
+Homepage = "https://vectorinstitute.github.io/humanibench/"
+Documentation = "https://vectorinstitute.github.io/humanibench/"
+Repository = "https://github.com/VectorInstitute/humanibench"
+"Bug Tracker" = "https://github.com/VectorInstitute/humanibench/issues"
+Paper = "https://arxiv.org/abs/2505.11454"
+Dataset = "https://huggingface.co/datasets/vector-institute/HumaniBench"
 
 [build-system]
 requires = ["hatchling"]
@@ -23,7 +71,7 @@ dev = [
     "codecov>=2.1.13",
     "mypy>=1.20.1",
     "nbqa>=1.9.1",
-    "pip>=26.0", # Pinning version to address vulnerability CVE-2026-1703
+    "pip>=26.0",  # Pinning version to address vulnerability CVE-2026-1703
     "pip-audit>=2.7.3",
     "pre-commit>=4.1.0",
     "pytest>=8.3.4",
@@ -31,29 +79,30 @@ dev = [
     "pytest-cov>=6.0.0",
     "pytest-mock>=3.14.0",
     "ruff>=0.13.3",
+    "types-requests",  # Stubs for stricter checks on `requests` usage
 ]
 docs = [
-    "jinja2>=3.1.6", # Pinning version to address vulnerability GHSA-cpwx-vrp4-4pq7
-    "pygments>=2.20.0", # Pinning version to address vulnerability CVE-2026-4539
+    "jinja2>=3.1.6",  # Pinning version to address vulnerability GHSA-cpwx-vrp4-4pq7
+    "pygments>=2.20.0",  # Pinning version to address vulnerability CVE-2026-4539
     "mkdocs>=1.6.0",
     "mkdocs-material>=9.5.15",
-    "pymdown-extensions>=10.21.2", # Pinning version to fix pygments 2.20.0 compatibility
+    "pymdown-extensions>=10.21.2",  # Pinning version to fix pygments 2.20.0 compatibility
     "mkdocstrings>=1.0.4",
     "mkdocstrings-python>=1.10.0",
     "ipykernel>=6.29.5",
     "ipython>=8.31.0",
 ]
 
-# Default dependency groups to be installed
+# Default: tooling + doc builds. Use `uv sync --no-dev` (or no default groups) for minimal installs in CI.
 [tool.uv]
 default-groups = ["dev", "docs"]
 
 [tool.mypy]
 follow_imports = "normal"
 ignore_missing_imports = false
-install_types = true
+# Rely on stub packages in dev deps; avoids interactive `pip install types-*` in CI/IDE.
+install_types = false
 pretty = true
-non_interactive = true
 allow_untyped_defs = false
 no_implicit_optional = true
 check_untyped_defs = true
@@ -71,9 +120,47 @@ strict_equality = true
 extra_checks = true
 mypy_path = "src"
 
+# Optional / heavy third-party. Submodules covered by a top-level name do not need a
+# separate `package.*` entry (mypy reports them as unused when extras are installed).
+# Add back specific packages if you run mypy in an environment without those dependencies.
+[[tool.mypy.overrides]]
+module = [
+    "torch",
+    "torch.*",
+    "torchvision",
+    "torchvision.*",
+    "transformers",
+    "datasets",
+    "huggingface_hub",
+    "accelerate",
+    "PIL",
+    "openai",
+    "google",
+    "google.*",
+    "dotenv",
+    "bert_score",
+    "evaluate",
+    "langdetect",
+    "qwen_vl_utils",
+    "newspaper",
+    "deepseek_vl2.*",
+    "tqdm",
+    "tqdm.*",
+    "sklearn.*",
+    "janus.*",
+    "deepeval.*",
+    "imageio",
+    "imgaug",
+    "imgaug.*",
+    "matplotlib",
+    "matplotlib.*",
+    "ultralytics",
+]
+ignore_missing_imports = true
+
 [tool.ruff]
-include = ["*.py", "pyproject.toml", "*.ipynb"]
-exclude = []
+# Ruff lints `*.py` and notebooks; the config file is not a Python file to include here.
+include = ["**/*.py", "**/*.ipynb"]
 line-length = 120
 
 [tool.ruff.format]
@@ -83,44 +170,47 @@ docstring-code-format = true
 
 [tool.ruff.lint]
 select = [
-    "A", # flake8-builtins
-    "B", # flake8-bugbear
+    "A",   # flake8-builtins
+    "B",   # flake8-bugbear
     "COM", # flake8-commas
-    "C4", # flake8-comprehensions
+    "C4",  # flake8-comprehensions
     "RET", # flake8-return
     "SIM", # flake8-simplify
     "ICN", # flake8-import-conventions
-    "Q", # flake8-quotes
+    "Q",   # flake8-quotes
     "RSE", # flake8-raise
-    "D", # pydocstyle
-    "E", # pycodestyle
-    "F", # pyflakes
-    "I", # isort
-    "W", # pycodestyle
-    "N", # pep8-naming
+    "D",   # pydocstyle
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # isort
+    "W",   # pycodestyle
+    "N",   # pep8-naming
     "ERA", # eradicate
-    "PL", # pylint
+    "PL",  # pylint
 ]
 fixable = ["A", "B", "COM", "C4", "RET", "SIM", "ICN", "Q", "RSE", "D", "E", "F", "I", "W", "N", "ERA", "PL"]
 ignore = [
-    "B905", # `zip()` without an explicit `strict=` parameter
-    "E501", # line too long
-    "D203", # 1 blank line required before class docstring
-    "D213", # Multi-line docstring summary should start at the second line
-    "PLR2004", # Replace magic number with named constant
-    "PLR0913", # Too many arguments
-    "COM812", # Missing trailing comma
-    "ERA001", # Found commented-out code (too many false positives with math comments)
-    "A001", # Ignore variable `input` is shadowing a Python builtin (common for torch)
-    "A002", # Ignore variable `input` is shadowing a Python builtin in function (common for torch)
-    "D301", # r-strings for docstrings with backslashes
+    "B905",  # `zip()` without an explicit `strict=` parameter
+    "E501",  # line too long
+    "D203",  # 1 blank line required before class docstring
+    "D213",  # Multi-line docstring summary should start at the second line
+    "PLR2004",  # Replace magic number with named constant
+    "PLR0913",  # Too many arguments
+    "COM812",  # Missing trailing comma
+    "ERA001",  # Found commented-out code (too many false positives with math comments)
+    "A001",  # Ignore variable `input` is shadowing a Python builtin (common for torch)
+    "A002",  # Ignore variable `input` is shadowing a Python builtin in function (common for torch)
+    "D301",  # r-strings for docstrings with backslashes
+    "PLR0915",  # Main blocks in inference/metric scripts are necessarily long
 ]
 
 # Ignore import violations in all `__init__.py` files.
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402", "F401", "F403", "F811"]
-# Ignoring undocumented public functions, public init, magic method, and magic numbers in tests folder
+# Undocumented public functions, __init__, magic methods in tests
 "tests/*" = ["D103", "D105", "D107"]
+# Task scripts are named after models/tools
+"src/task*" = ["N999"]
 
 
 [tool.ruff.lint.pep8-naming]
@@ -133,14 +223,14 @@ lines-after-imports = 2
 convention = "numpy"
 
 [tool.ruff.lint.pycodestyle]
-max-doc-length = 88
+# Match [tool.ruff] line-length so W505 and E501 are aligned
+max-doc-length = 120
 
 [tool.pytest.ini_options]
 markers = [
     "integration_test: marks tests as integration tests",
 ]
 
-[tool.coverage]
-    [tool.coverage.run]
-    source=["src/aieng_template_uv"]
-    omit=["tests/*", "*__init__.py"]
+[tool.coverage.run]
+source = ["src/humanibench"]
+omit = ["tests/*", "*__init__.py"]
