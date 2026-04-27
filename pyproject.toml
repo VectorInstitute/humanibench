@@ -78,7 +78,7 @@ dev = [
     "pytest-asyncio>=0.25.2",
     "pytest-cov>=6.0.0",
     "pytest-mock>=3.14.0",
-    "ruff>=0.13.3",
+    "ruff>=0.15.12",
     "types-requests",  # Stubs for stricter checks on `requests` usage
 ]
 docs = [
