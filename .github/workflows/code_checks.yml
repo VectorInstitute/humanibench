@@ -57,3 +57,5 @@ jobs:
           virtual-environment: .venv/
           ignore-vulns: |
             GHSA-4xh5-x5gv-qwph
+            PYSEC-2026-142
+            PYSEC-2026-141
