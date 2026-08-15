@@ -1,5 +1,8 @@
 # HumaniBench: A Human-Centric Benchmark for Large Multimodal Models Evaluation
 
+
+> 🎉 Accepted at **ACM Transactions on Intelligent Systems and Technology (ACM TIST)** - Impact Factor: 10.7
+
 --------------------------------
 
 [![code checks](https://github.com/VectorInstitute/HumaniBench/actions/workflows/code_checks.yml/badge.svg)](https://github.com/VectorInstitute/HumaniBench/actions/workflows/code_checks.yml)
