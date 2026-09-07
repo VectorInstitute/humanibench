@@ -19,7 +19,7 @@
 <p align="center">
   <b>🌐 Website:</b> <a href="https://vectorinstitute.github.io/humanibench/">vectorinstitute.github.io/humanibench</a>
   &nbsp;|&nbsp;
-  <b>📄 Paper:</b> <a href="https://arxiv.org/abs/2505.11454">arxiv.org/abs/2505.11454</a>
+  <b>📄 Paper:</b> <a href="https://dl.acm.org/doi/10.1145/3845999">doi/10.1145/3845999</a>
   &nbsp;|&nbsp;
   <b>📊 Dataset:</b> <a href="https://huggingface.co/datasets/vector-institute/HumaniBench">Hugging Face</a>
 </p>
@@ -144,12 +144,19 @@ The other important note is that while `poetry` uses a "flat" layout of the proj
 If you use HumaniBench or this evaluation suite in your work, please cite:
 
 ```bibtex
-        @article{raza2025humanibench,
-            title={Humanibench: A human-centric framework for large multimodal models evaluation},
-            author={Raza, Shaina and Narayanan, Aravind and Khazaie, Vahid Reza and Vayani, Ashmal and Radwan, Ahmed Y and Chettiar, Mukund S and Singh, Amandeep and Shah, Mubarak and Pandya, Deval},
-            journal={arXiv preprint arXiv:2505.11454},
-            year={2025}
-          }
+@article{raza2026humanibench,
+  author = {Raza, Shaina and Narayanan, Aravind and Khazaie, Vahid Reza and Vayani, Ashmal and Radwan, Ahmed Y. and Chettiar, Mukund S. and Singh, Amandeep and Shah, Mubarak and Pandya, Deval},
+  title = {HumaniBench: A Human-Centric Framework for Large Multimodal Models Evaluation},
+  year = {2026},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  issn = {2157-6904},
+  url = {https://doi.org/10.1145/3845999},
+  doi = {10.1145/3845999},
+  note = {Just Accepted},
+  journal = {ACM Trans. Intell. Syst. Technol.},
+  month = sep,
+}
 
 ```
 ---
