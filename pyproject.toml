@@ -24,7 +24,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 dependencies = [
-    "filelock==3.29.0",
+    "filelock==3.32.3",
     "requests>=2.33.0",  # Pinning version to address vulnerability CVE-2026-25645
     "urllib3==2.6.3",
     "pygments>=2.20.0",  # Pinning version to address vulnerability CVE-2026-4539
